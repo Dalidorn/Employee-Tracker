@@ -129,7 +129,7 @@ function addEmployee() {
     //query db for manager info
     db.query(`SELECT first_name, last_name, id FROM employee`, (err, results) => {
         results.forEach(employee => {
-            managers.push(`${employee.firstName} ${employee.lastName}`);
+            managers.push(`${employee.first_name} ${employee.last_name}`);
             managerIDs.push(employee.id);
         });
         //add option for no manager
@@ -245,7 +245,7 @@ function updateRole() {
     //query db for employee info
     db.query(`SELECT first_name, last_name, id, FROM employee`, (err, results) => {
         results.forEach(employee => {
-            employees.push(`${employee.firstName} ${employee.lastName}`);
+            employees.push(`${employee.first_name} ${employee.last_name}`);
             employeeIDs.push(employee.id);
         });
     });

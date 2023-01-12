@@ -1,13 +1,3 @@
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Jimmy", "John", 1, null),
-       ("George", "Gillroy", 1, 1),
-       ("Megan", "Martinez", 2, null),
-       ("Derek", "Dogson", 3, 3),
-       ("Timmy", "Tilup", 4, null),
-       ("Micheal", "McPherson", 5, 5),
-       ("Sam", "Sandman", 6, null),
-       ("Laura", "Lordson", 7, 7);
-
 INSERT INTO department (name)
 VALUES ("Tech Support"),
        ("IT Department"),
@@ -23,3 +13,13 @@ VALUES ("Department Head", 150000, 1),
        ("General Labor", 50000, 3),
        ("Head Janitor", 80000, 4),
        ("Floor Polisher", 40000, 4);
+
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ("Jimmy", "John", 1, null),
+       ("George", "Gillroy", 1, 1),
+       ("Megan", "Martinez", 2, null),
+       ("Derek", "Dogson", 3, 3),
+       ("Timmy", "Tilup", 4, null),
+       ("Micheal", "McPherson", 5, 5),
+       ("Sam", "Sandman", 6, null),
+       ("Laura", "Lordson", 7, 7);
