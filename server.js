@@ -86,7 +86,7 @@ function viewAllEmployees() {
 
         console.log("---------------------------------------------------------")
         console.table(results);
-        showMainMenu();
+        showHomePage();
     });
 };
 
@@ -95,7 +95,7 @@ function viewAllRoles() {
 
         console.log("---------------------------------------------------------")
         console.table(results);
-        showMainMenu();
+        showHomePage();
     });
 };
 
@@ -104,7 +104,7 @@ function viewAllDepartments() {
 
         console.log("---------------------------------------------------------")
         console.table(results);
-        showMainMenu();
+        showHomePage();
     });
 };
 
@@ -171,7 +171,7 @@ function addEmployee() {
 
         //insert everything into the db
         db.query(`INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ('${response.firstName}', '${response.lastName}', ${roleIDs[roles.indexOf(response.role)]}, ${managerID})`, (err, results) => {
-            showMainMenu();
+            showHomePage();
         });
     });
 };
@@ -211,7 +211,7 @@ function addRole() {
     ]).then((response) => {
         //insert everything into the db
         db.query(`INSERT INTO role (title, salary, department_id) VALUE ("${response.role}", "${response.salary}", "${departmentIDs[departments.indexOf(response.department)]}")`, (err, results) => {
-            showMainMenu();
+            showHomePage();
         });
     });
 };
@@ -228,7 +228,7 @@ function addDepartment() {
     ]).then((response) => {
         //insert everything into the db
         db.query(`INSERT INTO department (name) VALUE ("${response.newDepartment}")`, (err, results) => {
-            showMainMenu();
+            showHomePage();
         });
     });
 };
@@ -275,7 +275,7 @@ function updateRole() {
     ]).then((response) => {
         //insert everything into the db
         db.query(`UPDATE employee SET role_id=${roleIDs[roles.indexOf(response.role)]} WHERE id=${employeeIDs[employees.indexOf(response.employee)]};`, (err, results) => {
-            showMainMenu();
+            showHomePage();
         });
     });
 };
