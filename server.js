@@ -176,8 +176,8 @@ function addEmployee() {
 //role
 function addRole() {
     //set up choices in arrays for use in the prompt
-    let departments = []
-    let departmentIDs = []
+    let departments = [];
+    let departmentIDs = [];
 
     //query db for department info
     db.query("SELECT id, name FROM department", (err, results) => {
@@ -230,3 +230,49 @@ function addDepartment() {
     });
 };
 
+// ---UPDATE LOGIC---
+
+function updateRole() {
+    //set up choices in arrays for use in the prompt
+    let employees = [];
+    let employeeIDs = [];
+    let roles = [];
+    let roleIDs = [];
+
+    //query db for employee info
+    db.query(`SELECT first_name, last_name, id, FROM employee`, (err, results) => {
+        results.forEach(employee => {
+            employees.push(`${employee.firstName} ${employee.lastName}`);
+            employeeIDs.push(employee.id);
+        });
+    });
+    
+    //query db for role info
+    db.query(`SELECT id, title FROM role`, (err, results) => {
+        results.forEach(role => {
+            roles.push(role.title);
+            roleIDs.push(role.id);
+        });
+    });
+
+    //start prompt
+    inquirer.prompt([
+        {
+          type: "list",
+          message: "Which employee's role do you want to update?",
+          name: "employee",
+          choices: employees
+        },
+        {
+          type: "list",
+          message: "Which new role would you like to update the employee to?",
+          name: "role",
+          choices: roles
+        }
+    ]).then((response) => {
+        //insert everything into the db
+        db.query(`UPDATE employee SET role_id=${roleIDs[roles.indexOf(response.role)]} WHERE id=${employeeIDs[employees.indexOf(response.employee)]};`, (err, results) => {
+            showMainMenu();
+        });
+    });
+};
