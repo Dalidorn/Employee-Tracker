@@ -243,11 +243,13 @@ function updateRole() {
     let roleIDs = [];
 
     //query db for employee info
-    db.query(`SELECT first_name, last_name, id, FROM employee`, (err, results) => {
+    db.query(`SELECT first_name, last_name, id FROM employee`, (err, results) => {
         results.forEach(employee => {
             employees.push(`${employee.first_name} ${employee.last_name}`);
             employeeIDs.push(employee.id);
         });
+        // console.log("Gathered Employees")
+        // console.log(employees)
     });
     
     //query db for role info
@@ -256,6 +258,8 @@ function updateRole() {
             roles.push(role.title);
             roleIDs.push(role.id);
         });
+        // console.log("Gathered Roles")
+        // console.log(roles)
     });
 
     //start prompt
