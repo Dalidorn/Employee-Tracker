@@ -260,26 +260,26 @@ function updateRole() {
         });
         // console.log("Gathered Roles")
         // console.log(roles)
-    });
 
     //start prompt
-    inquirer.prompt([
-        {
-          type: "list",
-          message: "Which employee's role do you want to update?",
-          name: "employee",
-          choices: employees
-        },
-        {
-          type: "list",
-          message: "Which new role would you like to update the employee to?",
-          name: "role",
-          choices: roles
-        }
-    ]).then((response) => {
-        //insert everything into the db
-        db.query(`UPDATE employee SET role_id=${roleIDs[roles.indexOf(response.role)]} WHERE id=${employeeIDs[employees.indexOf(response.employee)]};`, (err, results) => {
-            showHomePage();
+        inquirer.prompt([
+            {
+            type: "list",
+            message: "Which employee's role do you want to update?",
+            name: "employee",
+            choices: employees
+            },
+            {
+            type: "list",
+            message: "Which new role would you like to update the employee to?",
+            name: "role",
+            choices: roles
+            }
+        ]).then((response) => {
+            //insert everything into the db
+            db.query(`UPDATE employee SET role_id=${roleIDs[roles.indexOf(response.role)]} WHERE id=${employeeIDs[employees.indexOf(response.employee)]};`, (err, results) => {
+                showHomePage();
+            });
         });
     });
 };
