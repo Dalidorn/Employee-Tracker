@@ -8,7 +8,7 @@ This was a class project to create an employee tracker usable through the comman
 
 ## Walkthrough
 
-https://youtu.be/Upk8vqqQQ7M
+https://www.youtube.com/watch?v=yyxjc6l1Mus
 
 ## Installation
 
